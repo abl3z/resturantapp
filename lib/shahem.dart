@@ -20,7 +20,7 @@ class _aboutState extends State<about> {
       home: SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: Color.fromRGBO(255, 247, 233, 1),
+          backgroundColor: Colors.amber,
           appBar: AppBar(
             toolbarHeight: 65,
             leading: IconButton(
@@ -60,7 +60,10 @@ class _aboutState extends State<about> {
                 ),
                 Text(
                   "شهم إبن اخوي. بعتبرو زي ابني وبحبو وبحبني لدرجة انو أول ما يشوفني بكفكفني وبعضني وبسكر الباب بوجهي ''انو ع بلاطة بعمل كل اشي الا انو يحبني''. حبيت اقدم الأبلكيشن ع اسمو عشان شهم بعنيلي كل إشي . بحبك شهوم …   من عمو صالح❤️",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 23,
+                      color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -77,7 +80,7 @@ class _aboutState extends State<about> {
                       width: 200,
                     ),
                     Image(
-                      image: AssetImage('shahemPic/shahem2.jpg'),
+                      image: AssetImage('shahemPic/shahem7.jpg'),
                       height: 200,
                       width: 200,
                     ),
@@ -131,7 +134,7 @@ class _aboutState extends State<about> {
                   children: [
                     Image(
                       image: AssetImage(
-                        'shahemPic/shahem7.jpg',
+                        'shahemPic/shahem2.jpg',
                       ),
                       height: 200,
                       width: 200,

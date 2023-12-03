@@ -21,7 +21,8 @@ class Address extends StatelessWidget {
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back,
-                color: Colors.white,
+                color: Color.fromRGBO(255, 247, 233, 1),
+                size: 40,
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -31,7 +32,7 @@ class Address extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Address Information",
+                  "Address Info",
                   style: TextStyle(
                       color: Color.fromRGBO(255, 247, 233, 1),
                       fontFamily: 'Pacifico',
@@ -44,7 +45,7 @@ class Address extends StatelessWidget {
                   "assets/icons/cutlery2.png",
                   width: 44,
                   height: 44,
-                )
+                ),
               ],
             ),
             backgroundColor: Color.fromRGBO(23, 70, 162, 1),
@@ -252,6 +253,9 @@ class _MyFormState extends State<MyForm> {
               validator: (value) {
                 if (value!.isEmpty || value.length < 10) {
                   return "Please Enter Your Phone Number";
+                }
+                if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                  return 'Only Numbers';
                 }
 
                 phone_num = int.parse(value);

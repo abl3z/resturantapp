@@ -20,20 +20,20 @@ class codePage extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Icon(
+                  Icons.password,
+                  color: Colors.amber,
+                  size: 35,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
                 Text(
                   "Reset Password",
                   style: TextStyle(
                       color: Color.fromRGBO(255, 247, 233, 1),
                       fontFamily: 'Pacifico',
                       fontSize: 30),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.password,
-                  color: Colors.black,
-                  size: 35,
                 ),
                 SizedBox(
                   width: 25,
@@ -90,6 +90,9 @@ class _MyFormState extends State<MyForm> {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please Enter The Code';
+                          }
+                          if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                            return 'Only Numbers';
                           }
                         },
                         controller: code,

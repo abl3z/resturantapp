@@ -39,6 +39,7 @@ class _CartState extends State<Cart> {
             children: [
               Icon(
                 Icons.shopping_cart,
+                color: Colors.amber,
                 size: 38,
               ),
               SizedBox(

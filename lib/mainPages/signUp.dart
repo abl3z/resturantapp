@@ -217,7 +217,7 @@ class _InfoState extends State<Info> {
                           return "Please Enter Your Phone Number";
                         }
                         if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                          return 'Only Numeric Characters Allowed';
+                          return 'Only Numbers';
                         }
                       },
                       controller: PhNum,

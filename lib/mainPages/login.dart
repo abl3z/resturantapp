@@ -70,169 +70,170 @@ class _MyFormState extends State<MyForm> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: Center(
-          child: Form(
-            key: _key,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 240,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      TextFormField(
-                        validator: (value) {
-                          if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
-                              .hasMatch(value!)) {
-                            return 'Please Enter a Valid Email Address';
-                          }
-                        },
-                        controller: email2,
-                        decoration: InputDecoration(
-                          labelText: ("Enter Your Email"),
-                          labelStyle: TextStyle(
-                              color: Color.fromRGBO(23, 70, 162, 1),
-                              fontSize: 17),
-                          hintText: "example@gmail.com",
-                          icon: Icon(
-                            Icons.email_outlined,
-                            color: Colors.amber,
-                            size: 40,
-                          ),
-                          border: OutlineInputBorder(),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+    return Center(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Center(
+            child: Form(
+              key: _key,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          validator: (value) {
+                            if (!RegExp(
+                                    r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
+                                .hasMatch(value!)) {
+                              return 'Please Enter a Valid Email Address';
+                            }
+                          },
+                          controller: email2,
+                          decoration: InputDecoration(
+                            labelText: ("Enter Your Email"),
+                            labelStyle: TextStyle(
                                 color: Color.fromRGBO(23, 70, 162, 1),
-                                width: 1),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 16), // Adjust contentPadding
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      TextFormField(
-                        obscureText: isObscureConfirmPassword,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please Enter Your Password";
-                          }
-                        },
-                        controller: pswd,
-                        decoration: InputDecoration(
-                          label: Text("Enter Your Password"),
-                          labelStyle: TextStyle(
-                              color: Color.fromRGBO(23, 70, 162, 1),
-                              fontSize: 17),
-                          icon: Icon(
-                            Icons.password,
-                            color: Colors.amber,
-                            size: 40,
-                          ),
-                          suffixIcon: IconButton(
+                                fontSize: 17),
+                            hintText: "example@gmail.com",
                             icon: Icon(
-                              isObscureConfirmPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              Icons.email_outlined,
                               color: Colors.amber,
+                              size: 40,
                             ),
-                            onPressed: () {
-                              setState(() {
-                                isObscureConfirmPassword =
-                                    !isObscureConfirmPassword;
-                              });
-                            },
+                            border: OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromRGBO(23, 70, 162, 1),
+                                  width: 1),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 16), // Adjust contentPadding
                           ),
-                          border: OutlineInputBorder(),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                        ),
+                        SizedBox(height: 16),
+                        TextFormField(
+                          obscureText: isObscureConfirmPassword,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Enter Your Password";
+                            }
+                          },
+                          controller: pswd,
+                          decoration: InputDecoration(
+                            label: Text("Enter Your Password"),
+                            labelStyle: TextStyle(
                                 color: Color.fromRGBO(23, 70, 162, 1),
-                                width: 2),
+                                fontSize: 17),
+                            icon: Icon(
+                              Icons.password,
+                              color: Colors.amber,
+                              size: 40,
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                isObscureConfirmPassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Colors.amber,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  isObscureConfirmPassword =
+                                      !isObscureConfirmPassword;
+                                });
+                              },
+                            ),
+                            border: OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromRGBO(23, 70, 162, 1),
+                                  width: 2),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 16), // Adjust contentPadding
                           ),
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 16), // Adjust contentPadding
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 2),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        child: const Text(
+                          'Forgot password?',
+                          style: TextStyle(
+                              color: Colors.blueAccent,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => forgetPage()));
+                        },
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      ElevatedButton(
+                        child: const Text(
+                          "Sign In",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () {
+                          if (_key.currentState!.validate()) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Menu()));
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.amber,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 24),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 2),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'Forgot password?',
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "You don't have an account?",
                         style: TextStyle(
                             color: Colors.blueAccent,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => forgetPage()));
-                      },
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    ElevatedButton(
-                      child: const Text(
-                        "Sign In",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      SizedBox(
+                        height: 15,
                       ),
-                      onPressed: () {
-                        if (_key.currentState!.validate()) {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Menu()));
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.amber,
-                        padding:
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                      ElevatedButton(
+                        child: const Text(
+                          "Sign up",
+                          style: TextStyle(color: Colors.amber, fontSize: 20),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Signup()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Color.fromRGBO(172, 172, 171, 1),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 24),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "You don't have an account?",
-                      style: TextStyle(
-                          color: Colors.blueAccent,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(
-                      child: const Text(
-                        "Sign up",
-                        style: TextStyle(color: Colors.amber, fontSize: 20),
-                      ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Signup()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(172, 172, 171, 1),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                      ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

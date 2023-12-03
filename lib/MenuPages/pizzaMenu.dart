@@ -27,7 +27,8 @@ class _pizzaMenuState extends State<pizzaMenu> {
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back,
-                color: Colors.white,
+                color: Color.fromRGBO(255, 247, 233, 1),
+                size: 40,
               ),
               onPressed: () {
                 Navigator.push(
@@ -58,8 +59,8 @@ class _pizzaMenuState extends State<pizzaMenu> {
                   },
                   child: Icon(
                     Icons.person,
-                    size: 30,
-                    color: Colors.white,
+                    color: Color.fromRGBO(255, 247, 233, 1),
+                    size: 40,
                   ),
                 ),
               ],
@@ -84,8 +85,8 @@ class _pizzaMenuState extends State<pizzaMenu> {
                     },
                     child: Icon(
                       Icons.shopping_cart,
-                      size: 30,
-                      color: Colors.white,
+                      color: Color.fromRGBO(255, 247, 233, 1),
+                      size: 40,
                     ),
                   ),
                   SizedBox(

@@ -45,6 +45,7 @@ class _editProfileState extends State<editProfile> {
               Icon(
                 Icons.person,
                 size: 38,
+                color: Colors.amber,
               ),
               SizedBox(
                 width: 10,
@@ -142,11 +143,11 @@ class _editProfileState extends State<editProfile> {
                   "+962",
                   phoneController,
                   (value) {
-                    if (value == null || value.isEmpty) {
+                    if (value!.isEmpty || value.length < 10) {
                       return "Please Enter Your Phone Number";
                     }
                     if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                      return 'Only Numeric Characters Allowed';
+                      return 'Only Numbers';
                     }
                     return null;
                   },

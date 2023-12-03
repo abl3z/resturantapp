@@ -97,7 +97,7 @@ class _InfoState extends State<Info> {
                           return 'Please Enter A Valid Number';
                         }
                         if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                          return 'Only Numeric Characters Allowed';
+                          return 'Only Numbers';
                         }
                       },
                       decoration: InputDecoration(
@@ -134,7 +134,7 @@ class _InfoState extends State<Info> {
                         return 'Please Enter Your Expire Date';
                       }
                       if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                        return 'Only Numeric Characters Allowed';
+                        return 'Only Numbers';
                       }
                       expire_date = value;
                     },
@@ -159,7 +159,7 @@ class _InfoState extends State<Info> {
                         return 'Please Enter Your CVV';
                       }
                       if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                        return 'Only Numeric Characters Allowed';
+                        return 'Only Numbers';
                       }
                       CVV = value;
                     },

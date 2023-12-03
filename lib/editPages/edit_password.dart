@@ -26,113 +26,118 @@ class _appState extends State<editPass> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 247, 233, 1),
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        toolbarHeight: 65,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Color.fromRGBO(255, 247, 233, 1),
-            size: 40,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color.fromRGBO(255, 247, 233, 1),
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          toolbarHeight: 65,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Color.fromRGBO(255, 247, 233, 1),
+              size: 40,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: Color.fromRGBO(23, 70, 162, 1),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Icon(
-              Icons.password,
-              size: 38,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              "Change Password",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Pacifico',
-                  fontSize: 28),
-            )
-          ],
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          backgroundColor: Color.fromRGBO(23, 70, 162, 1),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              pass(context, "Old password", _obscureTextOldPassword,
-                  _oldPasswordController),
+              Icon(
+                Icons.password,
+                size: 38,
+                color: Colors.amber,
+              ),
               SizedBox(
-                height: 20,
+                width: 10,
               ),
-              pass(context, "New password", _obscureTextNewPassword,
-                  _newPasswordController),
-              SizedBox(
-                height: 20,
-              ),
-              pass(context, "Confirm password", _obscureTextConfirmPassword,
-                  _confirmPasswordController),
-              SizedBox(height: 30.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        if (_formKey.currentState!.validate()) {
-                          var sb1 = SnackBar(
-                            content: Text(
-                              "You have Sucessfully Change Your Password",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            duration: Duration(seconds: 4),
-                            backgroundColor: Colors.red,
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(sb1);
-                          Navigator.pop(context);
-                        }
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.amber,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                    ),
-                    child: Text(
-                      'Change Password',
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ),
-                  SizedBox(width: 15.0),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(172, 172, 171, 1),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => forgetPage()));
-                    },
-                    child: Text('Forget password ?',
-                        style: TextStyle(color: Colors.amber, fontSize: 15)),
-                  ),
-                ],
-              ),
+              Text(
+                "Change Password",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Pacifico',
+                    fontSize: 28),
+              )
             ],
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                pass(context, "Old password", _obscureTextOldPassword,
+                    _oldPasswordController),
+                SizedBox(
+                  height: 20,
+                ),
+                pass(context, "New password", _obscureTextNewPassword,
+                    _newPasswordController),
+                SizedBox(
+                  height: 20,
+                ),
+                pass(context, "Confirm password", _obscureTextConfirmPassword,
+                    _confirmPasswordController),
+                SizedBox(height: 30.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          if (_formKey.currentState!.validate()) {
+                            var sb1 = SnackBar(
+                                content: Text(
+                                  "You have Sucessfully Change Your Password",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                duration: Duration(seconds: 4),
+                                backgroundColor:
+                                    Color.fromRGBO(23, 70, 162, 1));
+                            ScaffoldMessenger.of(context).showSnackBar(sb1);
+                            Navigator.pop(context);
+                          }
+                        });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.amber,
+                        padding:
+                            EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                      ),
+                      child: Text(
+                        'Change Password',
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                    ),
+                    SizedBox(width: 15.0),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromRGBO(172, 172, 171, 1),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => forgetPage()));
+                      },
+                      child: Text('Forget password ?',
+                          style: TextStyle(color: Colors.amber, fontSize: 15)),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

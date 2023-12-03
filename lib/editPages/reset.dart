@@ -20,6 +20,14 @@ class resetPage extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Icon(
+                  Icons.password,
+                  color: Colors.amber,
+                  size: 35,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
                 Text(
                   "Reset Password",
                   style: TextStyle(
@@ -28,16 +36,8 @@ class resetPage extends StatelessWidget {
                       fontSize: 30),
                 ),
                 SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.password,
-                  color: Colors.black,
-                  size: 35,
-                ),
-                SizedBox(
                   width: 25,
-                )
+                ),
               ],
             ),
             backgroundColor: Color.fromRGBO(23, 70, 162, 1),

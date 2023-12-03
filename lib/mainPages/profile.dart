@@ -35,7 +35,11 @@ class _ppState extends State<PP> {
         appBar: AppBar(
           toolbarHeight: 65,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.white),
+            icon: Icon(
+              Icons.arrow_back,
+              color: Color.fromRGBO(255, 247, 233, 1),
+              size: 40,
+            ),
             onPressed: () {
               Navigator.pop(context);
               ;
@@ -48,6 +52,7 @@ class _ppState extends State<PP> {
               Icon(
                 Icons.person,
                 size: 38,
+                color: Colors.amber,
               ),
               SizedBox(
                 width: 10,
