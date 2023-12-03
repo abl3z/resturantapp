@@ -263,7 +263,9 @@ class _menulistState extends State<menulist> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => appMenu()),
+              MaterialPageRoute(
+                builder: (context) => drinksMenu(),
+              ),
             );
           },
         ),
@@ -277,7 +279,9 @@ class _menulistState extends State<menulist> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => drinksMenu()),
+              MaterialPageRoute(
+                builder: (context) => appMenu(),
+              ),
             );
           },
         ),
