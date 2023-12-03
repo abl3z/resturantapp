@@ -105,6 +105,9 @@ class _MyFormState extends State<MyForm> {
                 if (value!.isEmpty) {
                   return "Please Enter Your City name";
                 }
+                if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(value)) {
+                  return 'Only Alphabetical Characters Allowed';
+                }
 
                 city_name = value;
               },
@@ -183,6 +186,9 @@ class _MyFormState extends State<MyForm> {
                       if (value!.isEmpty) {
                         return 'Please Enter Your Floor Number';
                       }
+                      if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                        return 'Only Numbers';
+                      }
                       floor = value;
                     },
                     decoration: InputDecoration(
@@ -223,6 +229,9 @@ class _MyFormState extends State<MyForm> {
               validator: (value) {
                 if (value!.isEmpty) {
                   return "Please Enter Your Street Name";
+                }
+                if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(value)) {
+                  return 'Only Alphabetical Characters Allowed';
                 }
 
                 srt_name = value;
