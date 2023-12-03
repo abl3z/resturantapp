@@ -51,7 +51,7 @@ class _editProfileState extends State<editProfile> {
                 width: 10,
               ),
               Text(
-                "Edit Profile Account",
+                "Edit Profile Acc",
                 style: TextStyle(
                     color: Color.fromRGBO(255, 247, 233, 1),
                     fontFamily: 'Pacifico',

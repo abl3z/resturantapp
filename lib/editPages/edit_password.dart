@@ -118,12 +118,12 @@ class _appState extends State<editPass> {
                         style: TextStyle(color: Colors.white, fontSize: 15),
                       ),
                     ),
-                    SizedBox(width: 15.0),
+                    SizedBox(width: 10.0),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Color.fromRGBO(172, 172, 171, 1),
                         padding:
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                            EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                       ),
                       onPressed: () {
                         Navigator.push(
