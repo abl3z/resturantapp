@@ -9,6 +9,8 @@ void main() {
   );
 }
 
+String fullNamelogin = '';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -189,9 +191,11 @@ class _MyFormState extends State<MyForm> {
                         onPressed: () {
                           if (_key.currentState!.validate()) {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Menu()));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Menu(),
+                              ),
+                            );
                           }
                         },
                         style: ElevatedButton.styleFrom(
@@ -220,9 +224,11 @@ class _MyFormState extends State<MyForm> {
                         ),
                         onPressed: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Signup()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Signup(),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Color.fromRGBO(172, 172, 171, 1),

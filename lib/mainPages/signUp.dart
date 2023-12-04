@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
 import 'package:resturantapp/MenuPages/menu.dart';
+import 'package:resturantapp/mainPages/login.dart';
+import 'package:resturantapp/information.dart';
+
+Infor fullNameSignUp = new Infor('');
+String? email;
+int? phoneNumber;
+String? pass;
+String? confPass;
+List<dynamic> info = [fullNameSignUp, email, phoneNumber];
+List<dynamic> check = [pass, confPass];
 
 void main() {
   runApp(Signup());
 }
 
 class Signup extends StatelessWidget {
-  Signup({Key? key}) : super(key: key);
+  Signup({this.fullName, super.key});
+  String? fullName;
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +98,10 @@ class _InfoState extends State<Info> {
                                 }
                                 if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(value)) {
                                   return 'Only Alphabetical Characters Allowed';
+                                } else {
+                                  info.add(value);
+
+                                  fullNameSignUp.setInfo(value);
                                 }
                               },
                               controller: firstNameController,
@@ -188,6 +203,8 @@ class _InfoState extends State<Info> {
                         if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
                             .hasMatch(value!)) {
                           return 'Please Enter a Valid Email Address';
+                        } else {
+                          info.add(value);
                         }
                       },
                       controller: email,
@@ -218,6 +235,8 @@ class _InfoState extends State<Info> {
                         }
                         if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
                           return 'Only Numbers';
+                        } else {
+                          info.add(value);
                         }
                       },
                       controller: PhNum,
@@ -246,6 +265,8 @@ class _InfoState extends State<Info> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Please Enter Your Password';
+                        } else {
+                          check.add(value);
                         }
                       },
                       controller: pswd,
@@ -289,6 +310,8 @@ class _InfoState extends State<Info> {
                         }
                         if (value!.isEmpty) {
                           return "Please Enter Your Password";
+                        } else {
+                          check.add(value);
                         }
                       },
                       controller: pswd_confirm,
@@ -337,10 +360,15 @@ class _InfoState extends State<Info> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 setState(() {
+                                  print(
+                                      "--------------------------------------------------------------");
+                                  print(info);
+                                  print(check);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const Menu(),
+                                      builder: (context) => Menu(
+                                          fullName: fullNameSignUp.getInfo()),
                                     ),
                                   );
                                 });

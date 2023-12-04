@@ -125,7 +125,6 @@ class DrinkButton extends StatefulWidget {
 
 class _DrinkButtonState extends State<DrinkButton> {
   int _counter2 = 1;
-  // double? price;
 
   @override
   Widget build(BuildContext context) {
@@ -159,14 +158,9 @@ class _DrinkButtonState extends State<DrinkButton> {
                             child: Icon(Icons.remove),
                           ),
                           SizedBox(width: 10.0),
-                          StatefulBuilder(
-                            // Wrap the text widget
-                            builder: (context, setState) {
-                              return Text(
-                                '$_counter2',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ); // Update the text dynamically using setState
-                            },
+                          Text(
+                            '$_counter2',
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           SizedBox(width: 10.0),
                           TextButton(

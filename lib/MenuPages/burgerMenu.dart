@@ -40,34 +40,27 @@ class _burgerMenuState extends State<burgerMenu> {
               },
             ),
             backgroundColor: Color.fromRGBO(23, 70, 162, 1),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.transparent),
-                    elevation: MaterialStateProperty.all(0),
+            title: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                elevation: MaterialStateProperty.all(0),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PP(),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PP(),
-                      ),
-                    );
-                  },
-                  child: Icon(
-                    Icons.person,
-                    color: Color.fromRGBO(255, 247, 233, 1),
-                    size: 40,
-                  ),
-                ),
-              ],
+                );
+              },
+              child: Icon(
+                Icons.person,
+                color: Color.fromRGBO(255, 247, 233, 1),
+                size: 40,
+              ),
             ),
             actions: [
               Row(
-                mainAxisSize: MainAxisSize.min,
                 children: [
                   ElevatedButton(
                     style: ButtonStyle(

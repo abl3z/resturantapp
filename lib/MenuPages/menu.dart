@@ -6,8 +6,10 @@ import 'drinksMenu.dart';
 import 'appMenu.dart';
 import '../mainPages/profile.dart';
 import '../mainPages/login.dart';
+import '../mainPages/signUp.dart';
 import '../mainPages/address1.dart';
 import 'package:resturantapp/shahem.dart';
+import 'package:resturantapp/information.dart';
 
 void main() {
   runApp(
@@ -18,8 +20,8 @@ void main() {
 }
 
 class Menu extends StatefulWidget {
-  const Menu({super.key});
-
+  final String? fullName;
+  const Menu({super.key, this.fullName});
   @override
   State<Menu> createState() => _MenuState();
 }
@@ -34,32 +36,30 @@ class _MenuState extends State<Menu> {
         appBar: AppBar(
           toolbarHeight: 65,
           backgroundColor: Color.fromRGBO(23, 70, 162, 1),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-          ),
           iconTheme:
               IconThemeData(color: Color.fromRGBO(255, 247, 233, 1), size: 40),
           actions: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.transparent),
-                    elevation: MaterialStateProperty.all(0),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                elevation: MaterialStateProperty.all(0),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Address(),
                   ),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Address()));
-                  },
-                  child: Icon(Icons.shopping_cart,
-                      size: 40, color: Color.fromRGBO(255, 247, 233, 1)),
-                ),
-                SizedBox(
-                  width: 15,
-                )
-              ],
+                );
+              },
+              child: Icon(
+                Icons.shopping_cart,
+                size: 40,
+                color: Color.fromRGBO(255, 247, 233, 1),
+              ),
+            ),
+            SizedBox(
+              width: 15,
             ),
           ],
         ),
@@ -142,10 +142,10 @@ class _mydrwrState extends State<mydrwr> {
       backgroundColor: Color.fromRGBO(255, 247, 233, 1),
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const [
+        children: [
           UserAccountsDrawerHeader(
             accountName: Text(
-              "Username",
+              "${fullNameSignUp.getInfo()}",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             accountEmail: Text(
@@ -200,14 +200,13 @@ class _menulistState extends State<menulist> {
             );
           },
         ),
-        Container(
-          child: Text(''),
-          color: Colors.blue,
-          width: double.infinity,
-          height: 2,
+        Divider(
+          color: Color.fromRGBO(23, 70, 162, 1),
+          height: 4,
+          thickness: 3,
         ),
         SizedBox(
-          height: 20,
+          height: 10,
         ),
         ListTile(
           leading: Image.asset(
@@ -281,11 +280,10 @@ class _menulistState extends State<menulist> {
             );
           },
         ),
-        Container(
-          child: Text(''),
-          color: Colors.blue,
-          width: double.infinity,
-          height: 2,
+        Divider(
+          color: Color.fromRGBO(23, 70, 162, 1),
+          height: 4,
+          thickness: 1.5,
         ),
         ListTile(
           leading: Image.asset(
@@ -306,11 +304,10 @@ class _menulistState extends State<menulist> {
             );
           },
         ),
-        Container(
-          child: Text(''),
-          color: Colors.blue,
-          width: double.infinity,
-          height: 2,
+        Divider(
+          color: Color.fromRGBO(23, 70, 162, 1),
+          height: 4,
+          thickness: 1.5,
         ),
         SizedBox(height: 150),
         ListTile(

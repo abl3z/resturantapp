@@ -62,6 +62,7 @@ class Assets {
   static const String iconsProfile = 'assets/icons/profile.png';
   static const String iconsShawarma = 'assets/icons/shawarma.jpg';
   static const String libConstraints = 'lib/Constraints.dart';
+  static const String libInformation = 'lib/information.dart';
   static const String libShahem = 'lib/shahem.dart';
   static const String mainPagesAddress1 = 'lib/mainPages/address1.dart';
   static const String mainPagesLogin = 'lib/mainPages/login.dart';
