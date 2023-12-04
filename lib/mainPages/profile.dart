@@ -68,12 +68,15 @@ class _ppState extends State<PP> {
           ),
         ),
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 70,
+              height: 50,
             ),
-            Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   width: 27,
@@ -82,10 +85,6 @@ class _ppState extends State<PP> {
                   "Name",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
-            Row(
-              children: [
                 SizedBox(
                   width: 25,
                 ),
@@ -108,7 +107,9 @@ class _ppState extends State<PP> {
             SizedBox(
               height: 70,
             ),
-            Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   width: 27,
@@ -117,10 +118,6 @@ class _ppState extends State<PP> {
                   "Gender",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
-            Row(
-              children: [
                 SizedBox(
                   width: 25,
                 ),
@@ -143,7 +140,9 @@ class _ppState extends State<PP> {
             SizedBox(
               height: 70,
             ),
-            Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   width: 27,
@@ -152,10 +151,6 @@ class _ppState extends State<PP> {
                   "Email",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
-            Row(
-              children: [
                 SizedBox(
                   width: 25,
                 ),
@@ -178,7 +173,9 @@ class _ppState extends State<PP> {
             SizedBox(
               height: 70,
             ),
-            Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   width: 27,
@@ -187,10 +184,6 @@ class _ppState extends State<PP> {
                   "Phone Number",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
-            Row(
-              children: [
                 SizedBox(
                   width: 25,
                 ),
