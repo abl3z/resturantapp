@@ -57,10 +57,13 @@ class _CartState extends State<Cart> {
           ),
         ),
         body: SingleChildScrollView(
+          //dk
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     width: 330,
@@ -69,7 +72,6 @@ class _CartState extends State<Cart> {
                       "assets/cart_images/abl3z_burger.jpg",
                     ),
                   ),
-                  Spacer(),
                   GestureDetector(
                     child: Container(
                       child: Padding(
@@ -91,7 +93,8 @@ class _CartState extends State<Cart> {
                   ),
                 ],
               ),
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     width: 330,
@@ -100,7 +103,6 @@ class _CartState extends State<Cart> {
                       "assets/cart_images/Pizza1.jpg",
                     ),
                   ),
-                  Spacer(),
                   GestureDetector(
                     child: Container(
                       child: Padding(
@@ -122,7 +124,8 @@ class _CartState extends State<Cart> {
                   ),
                 ],
               ),
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     width: 330,
@@ -131,7 +134,6 @@ class _CartState extends State<Cart> {
                       "assets/cart_images/Shawerma_1.jpg",
                     ),
                   ),
-                  Spacer(),
                   GestureDetector(
                     child: Container(
                       child: Padding(
@@ -153,7 +155,8 @@ class _CartState extends State<Cart> {
                   ),
                 ],
               ),
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     width: 330,
@@ -162,7 +165,6 @@ class _CartState extends State<Cart> {
                       "assets/cart_images/Cola1.jpg",
                     ),
                   ),
-                  Spacer(),
                   GestureDetector(
                     child: Container(
                       child: Padding(
@@ -184,7 +186,8 @@ class _CartState extends State<Cart> {
                   ),
                 ],
               ),
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     width: 330,
@@ -193,7 +196,6 @@ class _CartState extends State<Cart> {
                       "assets/cart_images/cheese_balls.jpg",
                     ),
                   ),
-                  Spacer(),
                   GestureDetector(
                     child: Container(
                       child: Padding(
