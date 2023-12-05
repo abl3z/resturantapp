@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
 import 'package:resturantapp/MenuPages/menu.dart';
-import 'package:resturantapp/mainPages/login.dart';
 import 'package:resturantapp/information.dart';
 
-Infor fullNameSignUp = new Infor('');
-String? email;
-int? phoneNumber;
-String? pass;
-String? confPass;
-List<dynamic> info = [fullNameSignUp, email, phoneNumber];
-List<dynamic> check = [pass, confPass];
+User userInfo = User();
+int _selectedGender = 0;
 
 void main() {
   runApp(Signup());
 }
 
 class Signup extends StatelessWidget {
-  Signup({this.fullName, super.key});
-  String? fullName;
+  Signup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +26,6 @@ class Info extends StatefulWidget {
   State<Info> createState() => _InfoState();
 }
 
-String gender = 'male';
 bool isObscurePassword = true;
 bool isObscureConfirmPassword = true;
 
@@ -99,9 +91,7 @@ class _InfoState extends State<Info> {
                                 if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(value)) {
                                   return 'Only Alphabetical Characters Allowed';
                                 } else {
-                                  info.add(value);
-
-                                  fullNameSignUp.setInfo(value);
+                                  User.setFullName(value);
                                 }
                               },
                               controller: firstNameController,
@@ -132,68 +122,58 @@ class _InfoState extends State<Info> {
                     height: 10,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(50, 0, 25, 10),
-                        child: Text(
-                          "Select Your Gender :",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                      SizedBox(
+                        width: 10,
                       ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Radio(
-                            value: 'male',
-                            groupValue: gender,
-                            onChanged: (value) {
-                              setState(() {
-                                gender = value.toString();
-                              });
-                            },
-                            activeColor: Colors.amber,
-                          ),
-                          Text('Male', style: TextStyle(fontSize: 20)),
-                        ],
+                      Icon(
+                        Icons.male_outlined,
+                        color: Colors.amber,
+                        size: 40,
                       ),
-                      Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(width: 5),
-                                  Radio(
-                                    value: 'female',
-                                    groupValue: gender,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        gender = value.toString();
-                                      });
-                                    },
-                                    activeColor: Colors.amber,
-                                  ),
-                                  Text(
-                                    'Female',
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                ],
-                              ),
-                            ],
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        "Select your Gender : ",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      DropdownButton<int>(
+                        hint: Text("Gender"),
+                        value: _selectedGender,
+                        onChanged: (newGender) {
+                          setState(() {
+                            if (newGender == 0) {
+                              _selectedGender = 0;
+                            } else {
+                              _selectedGender = 1;
+                            }
+                            //TODO Fix the gender not responding
+                            User.setGender(
+                              _selectedGender,
+                            );
+                          });
+                        },
+                        items: [
+                          DropdownMenuItem(
+                            child: Text(
+                              'Male',
+                              style: TextStyle(color: Colors.blueAccent),
+                            ),
+                            value: 0,
+                          ),
+                          DropdownMenuItem(
+                            child: Text(
+                              'Female',
+                              style: TextStyle(color: Colors.pinkAccent),
+                            ),
+                            value: 1,
                           ),
                         ],
-                      ),
+                      )
                     ],
                   ),
                   Padding(
@@ -204,7 +184,7 @@ class _InfoState extends State<Info> {
                             .hasMatch(value!)) {
                           return 'Please Enter a Valid Email Address';
                         } else {
-                          info.add(value);
+                          User.setEmail(value);
                         }
                       },
                       controller: email,
@@ -236,7 +216,7 @@ class _InfoState extends State<Info> {
                         if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
                           return 'Only Numbers';
                         } else {
-                          info.add(value);
+                          User.setPhoneNumber(value);
                         }
                       },
                       controller: PhNum,
@@ -266,7 +246,7 @@ class _InfoState extends State<Info> {
                         if (value!.isEmpty) {
                           return 'Please Enter Your Password';
                         } else {
-                          check.add(value);
+                          User.setPassword(value);
                         }
                       },
                       controller: pswd,
@@ -311,7 +291,7 @@ class _InfoState extends State<Info> {
                         if (value!.isEmpty) {
                           return "Please Enter Your Password";
                         } else {
-                          check.add(value);
+                          User.setConfPass(value);
                         }
                       },
                       controller: pswd_confirm,
@@ -362,13 +342,15 @@ class _InfoState extends State<Info> {
                                 setState(() {
                                   print(
                                       "--------------------------------------------------------------");
-                                  print(info);
-                                  print(check);
+                                  // print(info);
+                                  // print(check);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => Menu(
-                                          fullName: fullNameSignUp.getInfo()),
+                                        fullName: User.getFullName(),
+                                        email: User.getEmail(),
+                                      ),
                                     ),
                                   );
                                 });

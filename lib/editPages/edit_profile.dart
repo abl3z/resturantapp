@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'edit_password.dart';
+import 'package:resturantapp/information.dart';
+
+User userInfo = User();
 
 void main() {
   runApp(MaterialApp(home: editProfile()));
@@ -68,6 +71,7 @@ class _editProfileState extends State<editProfile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 package(
+                  1,
                   "FullName",
                   "Enter Your Full Name",
                   fullNameController,
@@ -97,7 +101,7 @@ class _editProfileState extends State<editProfile> {
                       width: 30,
                     ),
                     DropdownButton<int>(
-                      value: _selectedGender,
+                      value: userInfo.checkGender(User.getGender()),
                       onChanged: (newGender) {
                         setState(() {
                           if (newGender == 0) {
@@ -127,6 +131,7 @@ class _editProfileState extends State<editProfile> {
                   ],
                 ),
                 package(
+                  2,
                   "Enter Your Email",
                   "example@gmail.com",
                   emailController,
@@ -139,6 +144,7 @@ class _editProfileState extends State<editProfile> {
                   },
                 ),
                 package(
+                  3,
                   "Enter Phone Number",
                   "+962",
                   phoneController,
@@ -161,9 +167,19 @@ class _editProfileState extends State<editProfile> {
                       child: GestureDetector(
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              Navigator.pop(context);
-                            });
+                            setState(
+                              () {
+                                Navigator.pop(
+                                  context,
+                                  {
+                                    User.setFullName(textController1.text),
+                                    User.setGender(_selectedGender),
+                                    User.setEmail(textController2.text),
+                                    User.setPhoneNumber(textController3.text)
+                                  },
+                                );
+                              },
+                            );
                           }
                         },
                         child: Text(
@@ -210,18 +226,78 @@ class _editProfileState extends State<editProfile> {
   }
 }
 
-Widget package(String txt, String conTxt, TextEditingController controller,
-    String? Function(String?)? validator) {
+TextEditingController textController1 =
+    TextEditingController(text: User.getFullName());
+TextEditingController textController2 =
+    TextEditingController(text: User.getEmail());
+TextEditingController textController3 =
+    TextEditingController(text: User.getPhoneNumber());
+
+Widget package(int num, String txt, String conTxt,
+    TextEditingController controller, String? Function(String?)? validator) {
+  if (num == 1) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: TextFormField(
+            controller: textController1,
+            validator: validator,
+            decoration: InputDecoration(
+              labelText: txt,
+              hintText: conTxt,
+              //TODO Change name
+              errorStyle: TextStyle(color: Colors.red),
+              border: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: Color.fromRGBO(23, 70, 162, 1), width: 1),
+                // borderRadius: BorderRadius.circular(50),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+  if (num == 2) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: TextFormField(
+            controller: textController2,
+            validator: validator,
+            decoration: InputDecoration(
+              labelText: txt,
+              hintText: conTxt,
+              //TODO Change name
+              errorStyle: TextStyle(color: Colors.red),
+              border: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: Color.fromRGBO(23, 70, 162, 1), width: 1),
+                // borderRadius: BorderRadius.circular(50),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Padding(
         padding: const EdgeInsets.all(16),
-        // height: 50,
-        // width: 350,
         child: TextFormField(
-          controller: controller,
+          controller: textController3,
           validator: validator,
           decoration: InputDecoration(
             labelText: txt,

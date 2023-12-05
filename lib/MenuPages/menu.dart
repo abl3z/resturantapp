@@ -6,10 +6,11 @@ import 'drinksMenu.dart';
 import 'appMenu.dart';
 import '../mainPages/profile.dart';
 import '../mainPages/login.dart';
-import '../mainPages/signUp.dart';
 import '../mainPages/address1.dart';
 import 'package:resturantapp/shahem.dart';
 import 'package:resturantapp/information.dart';
+
+User userInfo = User();
 
 void main() {
   runApp(
@@ -21,7 +22,8 @@ void main() {
 
 class Menu extends StatefulWidget {
   final String? fullName;
-  const Menu({super.key, this.fullName});
+  final String? email;
+  const Menu({super.key, this.fullName, this.email});
   @override
   State<Menu> createState() => _MenuState();
 }
@@ -145,11 +147,11 @@ class _mydrwrState extends State<mydrwr> {
         children: [
           UserAccountsDrawerHeader(
             accountName: Text(
-              "${fullNameSignUp.getInfo()}",
+              User.getFullName(),
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             accountEmail: Text(
-              "example@gmail.com",
+              User.getEmail(),
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             currentAccountPicture: CircleAvatar(
@@ -342,6 +344,7 @@ class _menulistState extends State<menulist> {
                   ),
                   TextButton(
                     onPressed: () {
+                      User.logout();
                       Navigator.pop(context);
                     },
                     child: Text(

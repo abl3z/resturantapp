@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:resturantapp/editPages/edit_profile.dart';
+import 'package:resturantapp/information.dart';
+
+User userInfo = User();
 
 void main() {
   runApp(
@@ -26,6 +29,13 @@ class PP extends StatefulWidget {
 }
 
 class _ppState extends State<PP> {
+  // String updateFullName() {
+  //   setState(() {
+  //     return User.setFullName(User.getFullName());
+  //   });
+  //   return '';
+  // }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -99,7 +109,11 @@ class _ppState extends State<PP> {
                         style: BorderStyle.solid,
                       ),
                     ),
-                    child: pp("here"),
+                    child: StatefulBuilder(
+                      builder: (BuildContext context, StateSetter setState) {
+                        return pp(User.getFullName());
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -132,7 +146,7 @@ class _ppState extends State<PP> {
                         style: BorderStyle.solid,
                       ),
                     ),
-                    child: pp("here"),
+                    child: pp(User.getGender()),
                   ),
                 ),
               ],
@@ -165,7 +179,7 @@ class _ppState extends State<PP> {
                         style: BorderStyle.solid,
                       ),
                     ),
-                    child: pp("here"),
+                    child: pp(User.getEmail()),
                   ),
                 ),
               ],
@@ -198,7 +212,7 @@ class _ppState extends State<PP> {
                         style: BorderStyle.solid,
                       ),
                     ),
-                    child: pp("here"),
+                    child: pp(User.getPhoneNumber()),
                   ),
                 ),
               ],
